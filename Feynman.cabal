@@ -1,136 +1,36 @@
-name:                Feynman
-version:             0.1.0.0
-synopsis:            Quantum circuit optimization and verification tools
-description:         Feynman is a toolkit for quantum circuit analysis in the path integral
-                     model of quantum mechanics. The toolkit comprises synthesis, 
-                     optimization and verification methods based around representations of 
-                     circuit actions as sums-over-paths.
-license:             BSD2
-license-file:        LICENSE.md
-author:              Matthew Amy
-maintainer:          matt.e.amy@gmail.com
-copyright:           2016 Matthew Amy
-category:            Quantum
-build-type:          Simple
-cabal-version:       1.24
+cabal-version:      2.4
+name:               feynman
+version:            0.1.0.0
 
-source-repository head
-  type:              git
-  location:          https://github.com/meamy/feynman
+-- A short (one-line) description of the package.
+-- synopsis:
 
-library
-  ghc-options:         -O2
-  default-extensions:  GADTs,
-                       ExistentialQuantification,
-                       FlexibleContexts,
-                       FlexibleInstances
-  hs-source-dirs:      src
-  exposed-modules:     Feynman.Core,
-                       Feynman.Util.Unicode,
+-- A longer description of the package.
+-- description:
 
-                       Feynman.Algebra.Base,
-                       Feynman.Algebra.Matroid,
-                       Feynman.Algebra.Linear,
-                       Feynman.Algebra.Polynomial,
-                       Feynman.Algebra.Polynomial.Univariate,
-                       Feynman.Algebra.Polynomial.Multilinear,
-                       Feynman.Algebra.Pathsum.Balanced,
+-- A URL where users can report bugs.
+-- bug-reports:
 
-                       Feynman.Synthesis.Phase,
-                       Feynman.Synthesis.Reversible,
-                       Feynman.Synthesis.Reversible.Parallel,
-                       Feynman.Synthesis.Reversible.Gray,
+-- The license under which the package is released.
+-- license:
+author:             PariaNaghavi
+maintainer:         pariaghavi@gmail.com
 
-                       Feynman.Optimization.Swaps,
-                       Feynman.Optimization.PhaseFold,
-                       Feynman.Optimization.StateFold,
-                       Feynman.Optimization.TPar,
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files:
+    CHANGELOG.md
+    README.md
 
-                       Feynman.Verification.Symbolic,
+executable feynman
+    main-is:          Main.hs
 
-                       Feynman.Frontend.DotQC
-                       Feynman.Frontend.OpenQASM.Syntax
-                       Feynman.Frontend.OpenQASM.Lexer
-                       Feynman.Frontend.OpenQASM.Parser
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
 
-  build-tools:         alex, happy
-  build-depends:       QuickCheck >= 2.8.2,
-                       array >= 0.5.1.0,
-                       base >= 4.9 && < 4.13,
-                       bv,
-                       bytestring,
-                       containers >= 0.5.8.1,
-                       mtl,
-                       fast-digits >= 0.2.1.0,
-                       fin >= 0.1.1,
-                       ghc-prim >= 0.5.0.0,
-                       integer-gmp >= 1.0.0.1,
-                       parsec >= 3.0,
-                       parsec3-numbers,
-                       vec
-  default-language:    Haskell2010
-  
-
-executable feynopt
-  main-is:             FeynOpt.hs
-  buildable:           True 
-  ghc-options:         -O2 -Wall
-  default-extensions:  GADTs,
-                       ExistentialQuantification,
-                       FlexibleContexts,
-                       FlexibleInstances
-  hs-source-dirs:      tools
-  other-modules:       Benchmarks
-  build-depends:       Feynman,
-                       QuickCheck >= 2.8.2,
-                       ansi-terminal,
-                       array >= 0.5.1.0,
-                       base,
-                       bv,
-                       bytestring,
-                       containers >= 0.5.8.1,
-                       deepseq
-  default-language:    Haskell2010
-
-executable feynver
-  main-is:             FeynVerify.hs
-  buildable:           True
-  ghc-options:         -O2 -Wall
-  default-extensions:  GADTs,
-                       ExistentialQuantification,
-                       FlexibleContexts,
-                       FlexibleInstances
-  hs-source-dirs:      tools
-  build-depends:       Feynman,
-                       QuickCheck >= 2.8.2,
-                       ansi-terminal,
-                       array >= 0.5.1.0,
-                       base,
-                       bv,
-                       bytestring,
-                       containers >= 0.5.8.1,
-                       parsec >= 3.0,
-                       transformers >= 0.5.2.0
-  default-language:    Haskell2010
-
-executable qc2qasm
-  main-is:             QC2Qasm.hs
-  buildable:           True
-  ghc-options:         -O2 -Wall
-  hs-source-dirs:      tools
-  build-depends:       Feynman,
-                       base,
-                       bytestring,
-                       filepath
-  default-language:    Haskell2010
-
-executable ar21
-  main-is:             ar21.hs
-  buildable:           True
-  ghc-options:         -O2
-  hs-source-dirs:      scripts
-  build-depends:       Feynman,
-                       base,
-                       mtl,
-                       containers >= 0.5.8.1
-  default-language:    Haskell2010
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
